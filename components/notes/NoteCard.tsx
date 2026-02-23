@@ -38,7 +38,9 @@ export function NoteCard({ note, onEdit, view }: NoteCardProps) {
 
   function handleTogglePin(e: React.MouseEvent) {
     e.stopPropagation();
-    startTransition(() => togglePin(note.id));
+    startTransition(() => {
+      void togglePin(note.id);
+    });
   }
 
   function handleAction(e: React.MouseEvent, action: () => void) {
@@ -49,7 +51,9 @@ export function NoteCard({ note, onEdit, view }: NoteCardProps) {
 
   function handleCheckItem(e: React.MouseEvent, itemId: string) {
     e.stopPropagation();
-    startTransition(() => toggleCheckItem(itemId));
+    startTransition(() => {
+      void togglePin(note.id);
+    });
   }
 
   return (
