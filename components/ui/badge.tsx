@@ -4,14 +4,15 @@ interface BadgeProps {
   children: React.ReactNode;
   color?: string;
   className?: string;
+  onClick?: () => void;
 }
 
-export function Badge({ children, color, className }: BadgeProps) {
+export function Badge({ children, color, className, onClick }: BadgeProps) {
   return (
     <span
       className={cn(
         "inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-semibold tracking-wide uppercase",
-        className
+        className,
       )}
       style={
         color
@@ -22,6 +23,7 @@ export function Badge({ children, color, className }: BadgeProps) {
             }
           : {}
       }
+      onClick={onClick}
     >
       {children}
     </span>

@@ -43,16 +43,21 @@ export function NoteCard({ note, onEdit, view }: NoteCardProps) {
     });
   }
 
-  function handleAction(e: React.MouseEvent, action: () => void) {
+  function handleAction(
+    e: React.MouseEvent,
+    action: () => Promise<{ success: boolean }>,
+  ) {
     e.stopPropagation();
     setMenuOpen(false);
-    startTransition(action);
+    startTransition(() => {
+      void action();
+    });
   }
 
   function handleCheckItem(e: React.MouseEvent, itemId: string) {
     e.stopPropagation();
     startTransition(() => {
-      void togglePin(note.id);
+      void toggleCheckItem(itemId);
     });
   }
 

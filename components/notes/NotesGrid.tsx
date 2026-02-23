@@ -120,7 +120,7 @@ export function NotesGrid({ notes, tags, filter, tagFilter }: NotesGridProps) {
             variant="destructive"
             size="sm"
             disabled={isPending}
-            onClick={() => startTransition(() => emptyTrash())}
+            onClick={() => startTransition(() => void emptyTrash())}
           >
             <Trash2 className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Vaciar papelera</span>
@@ -235,7 +235,7 @@ function TrashedList({ notes }: { notes: NoteWithRelations[] }) {
               variant="ghost"
               size="sm"
               disabled={isPending}
-              onClick={() => startTransition(() => restoreNote(note.id))}
+              onClick={() => startTransition(() => void restoreNote(note.id))}
             >
               Restaurar
             </Button>
@@ -243,7 +243,7 @@ function TrashedList({ notes }: { notes: NoteWithRelations[] }) {
               variant="destructive"
               size="sm"
               disabled={isPending}
-              onClick={() => startTransition(() => deleteNote(note.id))}
+              onClick={() => startTransition(() => void deleteNote(note.id))}
             >
               Eliminar
             </Button>
